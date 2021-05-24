@@ -6,12 +6,8 @@ class Guess
     @card = card
   end
 
-  def response # why does this even need to exist?
-    @guess     # literally already initialized
-  end
-
   def correct?
-    response == "#{card.value} of #{card.suit}"
+    @guess == "#{@card.value} of #{@card.suit}"
   end
 
   def feedback
