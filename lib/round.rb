@@ -5,4 +5,8 @@ class Round
     @deck = deck
     @guesses = []
   end
+
+  def current_card
+    @deck.cards.first
+  end
 end
