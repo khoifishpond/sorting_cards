@@ -29,4 +29,8 @@ class RoundTest < Minitest::Test
   def test_records_guess
     assert_instance_of(Guess, @round.record_guess(@guess))
   end
+
+  def test_recods_correct_guess
+    assert(@round.record_guess(@guess).correct?)
+  end
 end
