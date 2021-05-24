@@ -33,4 +33,10 @@ class RoundTest < Minitest::Test
   def test_recods_correct_guess
     assert(@round.record_guess(@guess).correct?)
   end
+
+  def test_stores_new_guess
+    @round.record_guess(@guess)
+
+    assert_equal(1, @round.guesses.size)
+  end
 end
