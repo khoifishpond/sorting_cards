@@ -15,4 +15,8 @@ class RoundTest < Minitest::Test
   def test_it_exists
     assert_instance_of(Round, @round)
   end
+
+  def test_count_number_of_guesses
+    assert_empty(@round.guesses)
+  end
 end
