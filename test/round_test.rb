@@ -2,6 +2,7 @@ require "minitest/autorun"
 require "minitest/pride"
 require "./lib/card"
 require "./lib/deck"
+require "./lib/guess"
 require "./lib/round"
 
 class RoundTest < Minitest::Test
@@ -10,6 +11,7 @@ class RoundTest < Minitest::Test
     @card_2 = Card.new("4", "Clubs")
     @deck = Deck.new([@card_1, @card_2])
     @round = Round.new(@deck)
+    @guess = {value: "3", suit: "Hearts"}
   end
 
   def test_it_exists
@@ -25,6 +27,6 @@ class RoundTest < Minitest::Test
   end
 
   def test_records_guess
-    assert_instance_of(Guess, round.record_guess)
+    assert_instance_of(Guess, @round.record_guess(@guess))
   end
 end
