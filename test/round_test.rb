@@ -19,4 +19,8 @@ class RoundTest < Minitest::Test
   def test_count_number_of_guesses
     assert_empty(@round.guesses)
   end
+
+  def test_current_card
+    assert_equal(@card_1, @round.current_card)
+  end
 end
