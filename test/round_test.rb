@@ -23,4 +23,8 @@ class RoundTest < Minitest::Test
   def test_current_card
     assert_equal(@card_1, @round.current_card)
   end
+
+  def test_records_guess
+    assert_instance_of(Guess, round.record_guess)
+  end
 end
