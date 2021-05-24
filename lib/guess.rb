@@ -14,4 +14,7 @@ class Guess
     response == "#{card.value} of #{card.suit}"
   end
 
+  def feedback
+    correct? == true ? "Correct!" : "Incorrect."
+  end
 end
