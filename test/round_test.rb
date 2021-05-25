@@ -55,4 +55,11 @@ class RoundTest < Minitest::Test
     assert_equal(2, @round.guesses.size)
     assert_equal(1, @round.number_correct)
   end
+
+  def test_it_gives_feedback
+    @round.record_guess(@guess)
+    @round.record_guess(@another_guess)
+
+    assert_equal("Incorrect.", @round.guesses.last.feedback)
+  end
 end
