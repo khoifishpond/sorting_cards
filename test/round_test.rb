@@ -12,6 +12,7 @@ class RoundTest < Minitest::Test
     @deck = Deck.new([@card_1, @card_2])
     @round = Round.new(@deck)
     @guess = {value: "3", suit: "Hearts"}
+    @another_guess = {value: "Jack", suit: "Diamonds"}
   end
 
   def test_it_exists
@@ -38,5 +39,20 @@ class RoundTest < Minitest::Test
     @round.record_guess(@guess)
 
     assert_equal(1, @round.guesses.size)
+    assert_instance_of(Guess, @round.guesses.first)
+  end
+
+  def test_it_counts_correct_guesses
+    @round.record_guess(@guess)
+
+    assert_equal(1, @round.number_correct)
+  end
+
+  def test_it_stores_another_guess
+    @round.record_guess(@guess)
+    @round.record_guess(@another_guess)
+
+    assert_equal(2, @round.guesses.size)
+    assert_equal(1, @round.number_correct)
   end
 end
