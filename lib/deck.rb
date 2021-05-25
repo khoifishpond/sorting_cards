@@ -25,7 +25,6 @@ class Deck
         elsif @cards[index].rank > @cards[index + 1].rank
           @cards[index], @cards[index + 1] = @cards[index + 1], @cards[index]
           swapped = true
-          require 'pry'; binding.pry
         end
       end
       break if not swapped
