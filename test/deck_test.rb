@@ -30,6 +30,16 @@ class DeckTest < Minitest::Test
 
   def test_it_can_sort_cards
     @deck.sort
+
+    assert_equal(4, @deck.cards.first.rank)
+    assert_equal(14, @deck.cards.last.rank)
+    assert_equal("Diamonds", @deck.cards[3].suit)
+    assert_equal("Spades", @deck.cards.last.suit)
+  end
+
+  def test_it_can_merge_sort_cards
+    @deck.merge_sort(@cards)
+
     assert_equal(4, @deck.cards.first.rank)
     assert_equal(14, @deck.cards.last.rank)
     assert_equal("Diamonds", @deck.cards[3].suit)
