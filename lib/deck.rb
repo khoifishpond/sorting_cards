@@ -30,4 +30,34 @@ class Deck
       break if not swapped
     end
   end
+
+  def merge_sort(cards)
+    if cards.size <= 1
+      cards
+    else
+      mid = cards.size / 2
+      left = merge_sort(cards[0..mid - 1])
+      right = merge_sort(cards[mid..cards.size])
+      require 'pry'; binding.pry
+      merge(left, right)
+    end
+  end
+
+  def merge(left, right)
+    if left.empty?
+      right
+    elsif right.empty?
+      left
+    elsif left.first.rank == right.first.rank
+      if left.first.suit_rank < right.first.suit_rank
+        [left.first] + merge(left[1..left.size], right)
+      else
+        [right.first] + merge(left, right[1..right.size])
+      end
+    elsif left.first.rank < right.first.rank
+      [left.first] + merge(left[1..left.size], right)
+    else
+      [right.first] + merge(left, right[1..right.size])
+    end
+  end
 end
