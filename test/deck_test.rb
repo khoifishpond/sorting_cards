@@ -38,7 +38,7 @@ class DeckTest < Minitest::Test
   end
 
   def test_it_can_merge_sort_cards
-    @deck.merge_sort(@cards)
+    @deck.merge_sort(@deck.cards)
 
     assert_equal(4, @deck.cards.first.rank)
     assert_equal(14, @deck.cards.last.rank)
