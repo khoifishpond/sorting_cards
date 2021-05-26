@@ -33,31 +33,37 @@ class Deck
 
   def merge_sort(cards)
     if cards.size <= 1
-      cards
-    else
-      mid = cards.size / 2
-      left = merge_sort(cards[0..mid - 1])
-      right = merge_sort(cards[mid..cards.size])
-      require 'pry'; binding.pry
-      merge(left, right)
+      return cards
     end
+      mid = (cards.size / 2).round
+      left = merge_sort(cards.take(mid))
+      right = merge_sort(cards.drop(mid))
+
+      @cards = merge(left, right)
   end
 
   def merge(left, right)
     if left.empty?
-      right
-    elsif right.empty?
-      left
-    elsif left.first.rank == right.first.rank
+      return right
+    end
+
+    if right.empty?
+      return left
+    end
+
+    smallest_number = if left.first.rank == right.first.rank
       if left.first.suit_rank < right.first.suit_rank
-        [left.first] + merge(left[1..left.size], right)
+        left.shift
       else
-        [right.first] + merge(left, right[1..right.size])
+        right.shift
       end
     elsif left.first.rank < right.first.rank
-      [left.first] + merge(left[1..left.size], right)
+      left.shift
     else
-      [right.first] + merge(left, right[1..right.size])
+      right.shift
     end
+    recursive = merge(left,right)
+
+    [smallest_number].concat(recursive)
   end
 end
